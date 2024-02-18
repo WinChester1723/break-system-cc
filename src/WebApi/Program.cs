@@ -1,3 +1,7 @@
+using WebApi;
+using Application;
+using Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,10 +10,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Add services to the container.
-// builder.Services.AddWebServices(builder.Configuration);
-// builder.Services.AddApplication(builder.Configuration);
-// builder.Services
-//         .AddInfrastructure(builder.Configuration);
+builder.Services.AddWebServices(builder.Configuration);
+builder.Services.AddApplication(builder.Configuration);
+builder.Services
+        .AddInfrastructure(builder.Configuration);
 
 // Add services to the container.
 builder.Services.AddControllers();
