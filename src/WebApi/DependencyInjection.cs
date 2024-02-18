@@ -1,7 +1,30 @@
+using System.Reflection;
+using Application.Common.Contracts;
+using Microsoft.OpenApi.Models;
 
-// namespace WebApi;
+namespace WebApi;
 
-// public class DependencyInjection
-// {
-    
-// }
+/// <summary>
+/// Static class responsible for configuring dependency injection in the WebApi layer.
+/// </summary>
+public static class DependencyInjection
+{
+    /// <summary>
+    /// Adds web services to the service collection.
+    /// </summary>
+    /// <param name="services">The <see cref="IServiceCollection"/>.</param>
+    /// <param name="configuration">The <see cref="IConfiguration"/>.</param>
+    /// <returns>The <see cref="IServiceCollection"/> for chaining additional calls.</returns>
+    public static IServiceCollection AddWebServices(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddScoped<ICurrentUserService, ICurrentUserService>();
+
+        services.AddHttpContextAccessor();
+
+
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
+       
+        return services;
+    }
+}
