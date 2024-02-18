@@ -45,8 +45,6 @@ public static class DependencyInjection
         .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultTokenProviders();
 
-        services.AddScoped<DbContextInitialiser>();
-
         services.AddScoped<IBaseDbService, BaseDbService>();
 
         services.AddTransient<IIdentityService, IdentityService>();
