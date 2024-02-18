@@ -1,10 +1,18 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application.csproj"/>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools"/>
+    <PackageReference Include="Newtonsoft.Json"/>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" />
+  </ItemGroup>
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
-
 </Project>
