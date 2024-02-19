@@ -1,8 +1,8 @@
+namespace WebApi;
+
 using System.Reflection;
 using Application.Common.Contracts;
-using Microsoft.OpenApi.Models;
-
-namespace WebApi;
+using WebApi.Services;
 
 /// <summary>
 /// Static class responsible for configuring dependency injection in the WebApi layer.
@@ -17,7 +17,7 @@ public static class DependencyInjection
     /// <returns>The <see cref="IServiceCollection"/> for chaining additional calls.</returns>
     public static IServiceCollection AddWebServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddScoped<ICurrentUserService, ICurrentUserService>();
+        services.AddScoped<ICurrentUserService, CurrentUserService>();
 
         services.AddHttpContextAccessor();
 

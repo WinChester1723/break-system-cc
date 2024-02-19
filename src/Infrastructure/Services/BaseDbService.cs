@@ -1,5 +1,6 @@
 using Application.Common.Contracts;
 using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Services;
 
@@ -13,4 +14,12 @@ public class BaseDbService(ApplicationDbContext dbContext) : IBaseDbService
     /// <inheritdoc/>
     public Task<int> CommitChangesAsync(CancellationToken cancellationToken = default)
         => this.dbContext.SaveChangesAsync(cancellationToken);
+
+    /// <inheritdoc/>
+    public async Task<string?> GetEmployeeIdByUserIdAsync(string userId)
+    {
+        var employee = await dbContext.Employees
+                                     .SingleOrDefaultAsync(e => e.UserId == userId);
+        return employee?.Id;
+    }
 }

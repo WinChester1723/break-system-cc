@@ -11,10 +11,15 @@ public class Employee : BaseAuditableEntity
     /// <summary>
     /// 
     /// </summary>
-    public Employee ()
+    public Employee()
     {
         this.BreakRequests = new HashSet<BreakRequest>();
     }
+
+    /// <summary>
+    /// Gets or sets the user identifier associated with the employee.
+    /// </summary>
+    public required string UserId { get; set; }
 
     /// <summary>
     /// Get or set Name of employee.

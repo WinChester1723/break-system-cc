@@ -6,6 +6,7 @@ using Infrastructure.Data;
 using Infrastructure.Identity;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -24,10 +25,10 @@ public static class DependencyInjection
     {
 
         var connectionString = configuration.GetConnectionString("DefaultConnection");
-        // services.AddDbContext<ApplicationDbContext>(options =>
-        //     {
-        //         options.UseSqlServer(connectionString);
-        //     });
+        services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlServer(connectionString);
+            });
         services.AddScoped<DbContextInitialiser>();
 
 
